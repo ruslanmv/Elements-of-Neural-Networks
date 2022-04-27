@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "tensorspace": "^0.6.1"
+  }
+}
