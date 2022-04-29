@@ -312,31 +312,61 @@ http://ruslanmv.com/assets/tensorspace/data/models/helloworld/helloworld.html
 
 ![img](img/HelloWorld_empty_lenet.jpg)
 
+**Fig 1 Example of Neural Network with Tensorspace** 
 
 
 
 
 
+Let us discuss some of the building blocks of the **Convolutional Neural Networks.**
+
+The convolutional layer in convolutional neural networks systematically applies filters to an input and creates output feature maps.
+
+### **Stride**
+
+Stride is a parameter of the neural network's filter that modifies the amount of movement over the image or video. Stride describes the process of increasing the step size by which you slide a filter over an input image. With a stride of 2, you advance the filter by two pixels at each step.
+
+### Same Padding
+
+Same padding is the procedure of adding enough pixels at the edges so that the resulting feature map has the same dimensions as the input image to the convolution operation
+
+![same padding](assets/images/posts/README/Screenshot-2021-12-03-at-11.09.47-1024x580.png)
+
+**Fig 2 same padding for a 3×3 filter (left) and for a 5×5 filter (right)**
+
+### Maxpooling
+
+ Formally, its function is to progressively reduce the spatial size of the representation to reduce the amount of parameters and computation in the network. 
+
+Max pooling is done to in part to help over-fitting by providing an abstracted form of the representation. As well, it reduces the computational cost by reducing the number of parameters to learn and provides basic translation invariance to the internal representation. Max pooling is done by applying a max filter to (usually) non-overlapping subregions of the initial representation.
+
+Let's say we have a 4x4 matrix representing our initial input. Let's say, as well, that we have a 2x2 filter that we'll run over our input. We'll have a **stride** of 2 (meaning the (dx, dy) for stepping over our input will be (2, 2)) and won't overlap regions.
+
+For each of the regions represented by the filter, we will take the **max** of that region and create a new, output matrix where each element is the max of a region in the original input.
 
 
 
+![](assets/images/posts/README/MaxpoolSample2.png)
+
+**Fig 3 Pictorial representation** 
 
 
 
+![](assets/images/posts/README/MaxpoolSample.png)
+
+**Fig 4 Real-life example**
 
 
 
+Let us enter in more details about the Basic Elements of Neural Networks
 
 
 
-
-
-
-## Core Layers
+## 1. Core Layers
 
 Layers are the basic building blocks of **neural networks** in Keras. A layer consists of a tensor-in tensor-out computation function  and some state, held in TensorFlow variables (**the layer's *weights***).
 
-### 1.Input 
+### Input layer
 
 The **Input layer**, is used to instantiate a Keras tensor. A Keras tensor is a symbolic tensor-like object, which we augment with certain attributes that allow us to build a Keras model just by knowing the inputs and outputs of the model.
 
@@ -355,7 +385,7 @@ where the first arguments are:
 - **batch_size**: optional static batch size (integer).
 - **name**: An optional name string for the layer. 
 
-### 2. Dense layer 
+###  Dense layer 
 
 ```python
 from tensorflow.keras import layers            
@@ -394,11 +424,11 @@ The **dense layer** is found to be the most commonly **used layer** in the model
 
  If the input to the layer has a rank greater than 2, then `Dense` computes the dot product between the `inputs` and the `kernel` along the last axis of the `inputs` and axis 0 of the `kernel`
 
-## Activation Layers
+## 2. Activation Layers
 
 An **activation** function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a **layer** of the network
 
-### 3. ReLu layer
+###  ReLu layer
 
 The activations layer applies an activation function to an output  for example **ReLu**
 
@@ -417,7 +447,7 @@ The rectified linear **activation function** or **ReLU** for short is a piecewis
 
  The rectified linear **activation function** overcomes the vanishing gradient problem, allowing models to learn faster and perform better
 
-### 4. Sigmoid activation
+### Sigmoid activation
 
 **Sigmoidal functions** are frequently used in machine learning, specifically to model the output of a node or “neuron.” These **functions** are inherently non-**linear** and thus allow neural networks to find non-**linear** relationships between data features.
 
@@ -433,7 +463,7 @@ array([2.0611537e-09, 2.6894143e-01, 5.0000000e-01, 7.3105860e-01,
          1.0000000e+00], dtype=float32)
 ```
 
-### 5. Softmax activation
+###  Softmax activation
 
 The **softmax function** is used as the **activation function** in the output layer of neural network models that predict a multinomial probability distribution. That is, **softmax** is used as the **activation function** for multi-class classification problems where class membership is required on more than two class labels
 
@@ -449,7 +479,7 @@ Softmax is often used as the activation for the last layer of a classification n
 
 
 
-### 7. tanh function
+### Tanh function
 
 
 
@@ -464,11 +494,11 @@ Hyperbolic tangent activation function.
 array([-0.9950547, -0.7615942,  0.,  0.7615942,  0.9950547], dtype=float32)
 ```
 
-# Convolution layers
+# 3. Convolution layers
 
-1D convolution layer 
+### 1D convolution layer 
 
-**1D Convolutional Neural Networks** are used mainly used on text and **1D** signals
+1D Convolutional Neural Networks are used mainly used on text and **1D** signals
 
 This layer creates a convolution kernel that is convolved with the layer input over a single spatial (or temporal) dimension to produce a tensor of outputs. If `use_bias` is True, a bias vector is created and added to the outputs. Finally, if `activation` is not `None`, it is applied to the outputs as well.
 
@@ -491,9 +521,9 @@ the firsts  arguments are
 - **padding**: One of `"valid"`, `"same"` or `"causal"` (case-insensitive). `"valid"` means no padding. `"same"` results in padding with zeros evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input. `"causal"` results in causal (dilated) convolutions, e.g. `output[t]` does not depend on `input[t+1:]`. Useful when modeling temporal data where the model should not violate the temporal order. See [WaveNet: A Generative Model for Raw Audio, section 2.1](https://arxiv.org/abs/1609.03499).
 - **activation**: Activation function to use. If you don't specify anything, no activation is applied ( see `keras.activations`).
 
-# Conv2D layer
+### Conv2D layer
 
-**2-D convolutional layer** applies sliding **convolutional** filters to the input. The **layer** convolves the input by moving the filters along the input vertically and horizontally and computing the dot product of the weights and the input, and then adding a bias term.
+2-D convolutional layer applies sliding **convolutional** filters to the input. The **layer** convolves the input by moving the filters along the input vertically and horizontally and computing the dot product of the weights and the input, and then adding a bias term.
 
 2D convolution layer (e.g. spatial convolution over images).
 
@@ -509,9 +539,9 @@ When using this layer as the first layer in a model, provide the keyword argumen
 >>> # The inputs are 28x28 RGB images with `channels_last` and the batch   >>> # size is 4.   >>> input_shape = (4, 28, 28, 3) >>> x = tf.random.normal(input_shape) >>> y = tf.keras.layers.Conv2D( ... 2, 3, activation='relu', input_shape=input_shape[1:])(x) >>> print(y.shape) (4, 26, 26, 2)
 ```
 
-# Conv3D layer
+## Conv3D layer
 
-A **3D Convolution** is a type of **convolution** where the kernel slides in 3 dimensions as opposed to 2 dimensions with 2D **convolutions**. One example use case is medical imaging where a model is constructed using **3D** image slices.
+A 3D Convolution is a type of **convolution** where the kernel slides in 3 dimensions as opposed to 2 dimensions with 2D **convolutions**. One example use case is medical imaging where a model is constructed using **3D** image slices.
 
 
 
@@ -532,15 +562,11 @@ When using this layer as the first layer in a model, provide the keyword argumen
 (4, 26, 26, 26, 2)
 ```
 
-# Conv2DTranspose layer
+### Conv2DTranspose layer
 
 
 
-**Conv2DTranspose** is a convolution operation whose kernel is learnt (just like normal conv2d operation) while training your model. Using **Conv2DTranspose** will also upsample its input but the key difference is the model should learn what is the best upsampling for the job
-
-Transposed convolution layer (sometimes called Deconvolution).
-
-
+Conv2DTranspose is a convolution operation whose kernel is learnt (just like normal conv2d operation) while training your model. Using Conv2DTranspose will also upsample its input but the key difference is the model should learn what is the best upsampling for the job Transposed convolution layer (sometimes called Deconvolution).
 
 The need for transposed convolutions generally arises from the desire to use a transformation going in the opposite direction of a normal convolution, i.e., from something that has the shape of the output of some convolution to something that has the shape of its input while maintaining a connectivity pattern that is compatible with said convolution.
 
@@ -551,17 +577,15 @@ new_cols = ((cols - 1) * strides[1] + kernel_size[1] - 2 * padding[1] +
 output_padding[1])
 ```
 
-# Conv3DTranspose layer
+### Conv3DTranspose layer
 
-Transposed convolution layer (sometimes called Deconvolution).
+Transposed convolution layer (sometimes called Deconvolution). The need for transposed convolutions generally arises from the desire to use a transformation going in the opposite direction of a normal convolution, i.e., from something that has the shape of the output of some convolution to something that has the shape of its input while maintaining a connectivity pattern that is compatible with said convolution.
 
-The need for transposed convolutions generally arises from the desire to use a transformation going in the opposite direction of a normal convolution, i.e., from something that has the shape of the output of some convolution to something that has the shape of its input while maintaining a connectivity pattern that is compatible with said convolution.
+# 4. Regularization layers
 
-# Regularization layers
+### Dropout layer
 
-# Dropout layer
-
-**Dropout** is a technique used to prevent a model from overfitting.  **Dropout** works by randomly setting the outgoing edges of hidden units (neurons that make up hidden **layers**) to 0 at each update of the training phase
+Dropout is a technique used to prevent a model from overfitting.  **Dropout** works by randomly setting the outgoing edges of hidden units (neurons that make up hidden **layers**) to 0 at each update of the training phase
 
 Applies Dropout to the input.
 
@@ -589,7 +613,7 @@ tf.Tensor(
  [10.    0.  ]], shape=(5, 2), dtype=float32)
 ```
 
-# Layer weight regularizers
+### Layer weight regularizers
 
 Regularizers allow you to apply penalties on layer parameters or layer activity during optimization. These penalties are summed into the loss function that the network optimizes.
 
@@ -607,7 +631,7 @@ layer = layers.Dense(
 )
 ```
 
-# Pooling layers
+# 5. Pooling layers
 
 A **pooling layer** is a new **layer** added after the convolutional **layer**. Specifically, after a nonlinearity (e.g. ReLU) has been applied to the feature maps output by a convolutional **layer**; for example the **layers** in a model may look as follows: Input Image. Convolutional **Layer**
 
@@ -615,7 +639,7 @@ Maximum pooling, or max pooling, is a pooling operation that calculates the maxi
 
 
 
-# MaxPooling1D layer
+### MaxPooling1D layer
 
 Max pooling operation for 1D temporal data.
 
@@ -642,7 +666,7 @@ array([[[2.],
         [5.]]], dtype=float32)>
 ```
 
-# MaxPooling2D layer
+### MaxPooling2D layer
 
 Max pooling operation for 2D spatial data.
 
@@ -663,17 +687,13 @@ Downsamples the input along its spatial dimensions (height and width) by taking 
            [9.]]]], dtype=float32)>
 ```
 
-# Recurrent layers
+# 6. Recurrent layers
 
  The **RNN layer** is comprised of a single rolled **RNN** cell that unrolls according to the “number of steps” value (number of time steps/segments) you provide. As we mentioned earlier the main speciality in RNNs is the ability to model short term dependencies. This is due to the hidden state in the **RNN**
 
-# LSTM layer
-
-
+### LSTM layer
 
 Long short-term memory (**LSTM**) is an artificial recurrent neural network (**RNN**) architecture used in the field of deep learning. Unlike standard feedforward neural networks, **LSTM** has feedback connections. ... A common **LSTM** unit is composed of a cell, an input gate, an output gate and a forget gate.
-
-
 
 Based on available runtime hardware and constraints, this layer will choose different implementations (cuDNN-based or pure-TensorFlow) to maximize the performance. If a GPU is available and all the arguments to the layer meet the requirement of the CuDNN kernel (see below for details), the layer will use a fast cuDNN implementation.
 
@@ -734,7 +754,7 @@ The requirements to use the cuDNN implementation are:
 (32, 4)
 ```
 
-# Reshape layer
+# 7. Reshape layer
 
 The **Reshape layer** can be used to change the dimensions of its input, without changing its data. Just like the Flatten **layer**, only the dimensions are changed; no data is copied in the process. ... Positive numbers are used directly, setting the corresponding dimension of the output blob.
 
@@ -764,7 +784,7 @@ Arbitrary, although all dimensions in the input shape must be known/fixed. Use t
 >>> # as first layer in a Sequential model   >>> model = tf.keras.Sequential() >>> model.add(tf.keras.layers.Reshape((3, 4), input_shape=(12,))) >>> # model.output_shape == (None, 3, 4), `None` is the batch size.   >>> model.output_shape (None, 3, 4)
 ```
 
-# Flatten layer
+# 8. Flatten layer
 
 **Flatten** is the function that converts the pooled feature map to a single column that is passed to the fully connected **layer**. Dense adds the fully connected **layer** to the neural network.
 
@@ -794,11 +814,11 @@ Note: If inputs are shaped `(batch,)` without a feature axis, then flattening ad
 >>> model.add(Flatten()) >>> model.output_shape (None, 640)
 ```
 
-```
-https://keras.io/examples/
-```
+
 
 ## Models Examples
+
+Now that we have seen  some of the building blocks of the Neural Networks, we can visualize some of the neural networks.
 
 [AlexNet](http://ruslanmv.com/assets/tensorspace/data/models/alexnet/alexnet.html)
 
@@ -827,6 +847,8 @@ https://tensorspace.org/
 https://keras.io/
 
 https://www.tensorflow.org/
+
+https://keras.io/examples/
 
 
 
