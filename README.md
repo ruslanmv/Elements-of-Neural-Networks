@@ -356,13 +356,22 @@ For each of the regions represented by the filter, we will take the **max** of t
 
 **Fig 4 Real-life example**
 
+# Building Blocks of the Neural Networks
+
+There are 8 basic elements that I will consider to discuss:
+
+1. Core Layers
+2. Activation Layers
+3. Convolution layers
+4. Regularization layers
+5. Pooling layers
+6. Recurrent layers
+7. Reshape layer
+8. Flatten layer
 
 
-Let us enter in more details about the Basic Elements of Neural Networks
 
-
-
-## 1. Core Layers
+# 1. Core Layers
 
 Layers are the basic building blocks of **neural networks** in Keras. A layer consists of a tensor-in tensor-out computation function  and some state, held in TensorFlow variables (**the layer's *weights***).
 
@@ -424,7 +433,7 @@ The **dense layer** is found to be the most commonly **used layer** in the model
 
  If the input to the layer has a rank greater than 2, then `Dense` computes the dot product between the `inputs` and the `kernel` along the last axis of the `inputs` and axis 0 of the `kernel`
 
-## 2. Activation Layers
+# 2. Activation Layers
 
 An **activation** function in a neural network defines how the weighted sum of the input is transformed into an output from a node or nodes in a **layer** of the network
 
@@ -816,7 +825,7 @@ Note: If inputs are shaped `(batch,)` without a feature axis, then flattening ad
 
 
 
-## Models Examples
+# Models Examples
 
 Now that we have seen  some of the building blocks of the Neural Networks, we can visualize some of the neural networks.
 
@@ -840,6 +849,8 @@ Now that we have seen  some of the building blocks of the Neural Networks, we ca
 
 [tfjsvisor](http://ruslanmv.com/assets/tensorspace/data/models/render-in-tfjsvisor/index.html)
 
+If you are interested to download the papers or get more information about the previous models. You can visit this repository [here](https://github.com/ruslanmv/Neural-Networks-from-Scratch/tree/master/Papers)
+
 ### References
 
 https://tensorspace.org/
@@ -852,5 +863,4 @@ https://keras.io/examples/
 
 
 
-
-
+**Congratulations!** You have learned more about Neural Networks.
