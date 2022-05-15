@@ -1,7 +1,6 @@
 # Building Blocks of Neural Networks and  TensorSpace
 
 Hello, today I will discuss about the basic elements of the Neural Networks and have a picture of them.
-
 When you are working in the developing of **Machine Learning Models** by using
 
 **Neural Networks**, and you have one particular problem, and you want to  build a **custom**
