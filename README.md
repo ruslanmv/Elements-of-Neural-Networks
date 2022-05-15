@@ -9,10 +9,7 @@ When you are working in the developing of **Machine Learning Models** by using
 **network** for you particular problem and you don't know how to start.  Like happened to me he during the [MMORPG-AI Network](https://ruslanmv.com/blog/Neural-Network-Creation-from-Scratch)
 
 One manner to learn new things is try to have a **picture** of the abstract thing and then
-
-describe it.  I will introduce one interesting library that allows you visualize your custom
-
-neural network.
+describe it.  I will introduce one interesting library that allows you visualize your custom neural network.
 
 In addition I will try to introduce the **building blocks** of the Neural Networks in **Keras** that might help you to solve your problem.
 
